@@ -22,9 +22,19 @@ services:
     depends_on:
       - db
     volumes:
-      - ./api:/usr/api
+      - ./api:/user/api
     ports:
       - "8005:8005"
+    networks:
+      - work
+  client:
+    container_name: client
+    build: ./client
+    ports:
+      - "8080:8080"
+    command: bash -c "yarn dev"
+    depends_on:
+      - api_work
     networks:
       - work
 networks:

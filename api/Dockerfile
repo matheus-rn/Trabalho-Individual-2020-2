@@ -1,9 +1,9 @@
 FROM python:3
 
-RUN mkdir -p /usr/api
+RUN mkdir -p /user/api
 
-WORKDIR /usr/api
+WORKDIR /user/api
 
-COPY  . /usr/api
+COPY  . /user/api
 
 RUN pip install -r requirements.txt
