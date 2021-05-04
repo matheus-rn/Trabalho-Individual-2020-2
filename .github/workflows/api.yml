@@ -35,4 +35,5 @@ jobs:
       - name: Test with Django
         working-directory: api
         run: |
+          python manage.py migrate
           python manage.py test
