@@ -17,6 +17,11 @@ jobs:
           POSTGRES_PASSWORD: password
         ports:
           - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - uses: actions/checkout@v2
@@ -37,3 +42,8 @@ jobs:
         run: |
           python manage.py migrate
           python manage.py test
+
+      - name: Generate Coverage
+        working-directory: api
+        run: |
+          coverage run --source='.' manage.py test

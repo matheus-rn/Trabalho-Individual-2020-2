@@ -16,14 +16,18 @@ jobs:
         with:
           node-version: 12.x
 
+      - name: Lint
+        working-directory: client
+        run: |
+          yarn 
+          yarn lint
+
       - name: Tests
         working-directory: client
         run: |
           yarn 
           yarn test
 
-      - name: Lint
-        working-directory: client
+      - name: Generate Coverage
         run: |
-          yarn 
-          yarn lint
+          yarn test:unit:ci:coverage
