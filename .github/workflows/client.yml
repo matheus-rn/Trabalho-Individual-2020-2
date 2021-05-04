@@ -31,3 +31,11 @@ jobs:
       - name: Generate Coverage
         run: |
           yarn test:unit:ci:coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./client/test/jest/coverage/coverage-final.json
+          flags: frontend
+          fail_ci_if_error: true
