@@ -8,6 +8,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      db:
+      container_name: db
+      restart: always
+      image: postgres
+      volumes:
+        - ./data/db:/var/lib/postgresql/data
+      environment:
+        POSTGRES_DB: myproject
+        POSTGRES_USER: myuser
+        POSTGRES_PASSWORD: password
+      ports:
+        - "5432:5432"
     steps:
       - uses: actions/checkout@v2
 
