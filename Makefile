@@ -4,6 +4,9 @@ build:
 run:
 	docker-compose up
 
+stop:
+	docker stop client api_work
+
 run-d:
 	docker-compose up -d
 
@@ -13,5 +16,5 @@ down:
 api-test:
 	docker-compose run api_work python manage.py test
 
-api-test:
+front-test:
 	docker-compose run client quasar test --unit jest
